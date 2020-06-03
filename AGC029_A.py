@@ -1,20 +1,16 @@
-a=input()
-N=list(a)
+N=input()
 count=0
 AnyOperated=True
 
 while AnyOperated==True:
     temp_count=count
-    for n in range(len(N)-1):
-        if N[n]=='B' and N[n+1]=='W':
-            N[n]='W'
-            N[n+1]='B'
-            count+=1
-        else:
-            pass
+    if N.count('BW')>0:
+        count+=N.count('BW')
+        newN=N.replace('BW','WB')
+        N=newN
     if temp_count==count:
         AnyOperated=False
     else:
         pass
-    
+
 print(count)
