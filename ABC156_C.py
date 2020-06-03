@@ -1,13 +1,3 @@
-import numpy as np
-
-def IsDistributionBiased_Smaller (sortedarr,P):
-    _ndarr=np.array(sortedarr)
-    smallarr=np.where(_ndarr<=P)
-    if len(smallarr) > len (sortedarr)//2:
-        return True
-    else:
-        return False
-
 def WorkloadCalculation(arr,P):
     D=0
     for a in range(len(arr)):
@@ -23,29 +13,19 @@ for x in X:
     Xlist.append(_x)
 
 Xlist.sort()
-P=(Xlist[0]+Xlist[-1])//2
+P=Xlist[0]
 
 workload=10000000
 STOPflg=False
     
-if IsDistributionBiased_Smaller(Xlist,P) ==True:
-    while STOPflg==False:
-        _wl=WorkloadCalculation(Xlist,P)
-        if _wl < workload:
-            workload=_wl
-            P+=1
-        else:
-            print(workload)
-            STOPflg=True
-            exit()
-else:
-    while STOPflg==False:
-        _wl=WorkloadCalculation(Xlist,P)
-        if _wl < workload:
-            workload=_wl
-            P-=1
-        else:
-            print(workload)
-            STOPflg=True
-            exit()
+while STOPflg==False:
+    _wl=WorkloadCalculation(Xlist,P)
+    if _wl < workload:
+        workload=_wl
+        P+=1
+    else:
+        print(workload)
+        STOPflg=True
+        exit()
+        
 print(workload)
