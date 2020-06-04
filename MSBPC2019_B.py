@@ -1,9 +1,11 @@
-# N=1079
 N=int(input())
 
-ans=int(round((N*100/108)+0.1))
+a=int(N*100/110)-1
 
-if (ans*1.08)//1 == N:
-    print(ans)
-else:
-    print(":(")
+for i in range (N-a+1):
+    if ((a+i)*1.08)//1==N:
+        print(a+i)
+        exit()
+    else:
+        pass
+print(':(')
