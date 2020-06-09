@@ -1,26 +1,25 @@
-
 N,K=map(int,input().split())
-_=input().split()
-S=[]
-for s in _:
-    S.append(int(s))
+S=list(map(int,input().split()))
 
 # K=4
-# S=[17, 13, 13, 12, 15, 20, 10, 13, 17, 11]
+# S=(17, 13, 13, 12, 15, 20, 10, 13, 17, 11)
 # K=3
 # S=[1,2,2,4,5]
 
-EVlist=[]
+maxSKsum=0
+startSindex=0
 
-for i in range(len(S)):
-    tempEV=(S[i]*(S[i]+1))/2/S[i]
+for i in range(len(S)):  #ここがrange(len(S)-K)ではダメないのがわからない・・・
+    tempSKsum=sum(S[i:i+K])
+    if maxSKsum<tempSKsum:
+        maxSKsum=tempSKsum
+        startSindex=i
+    else:
+        pass
+
+EVlist=[]
+for s in range(K):
+    tempEV=S[startSindex+s]*(S[startSindex+s]+1)/2/S[startSindex+s]
     EVlist.append(tempEV)
 
-maxEVsum=0
-
-for j in range(len(EVlist)):
-    tempEVsum=sum(EVlist[j:j+K])
-    if maxEVsum<tempEVsum:
-        maxEVsum=tempEVsum
-
-print(maxEVsum)
+print(sum(EVlist))
