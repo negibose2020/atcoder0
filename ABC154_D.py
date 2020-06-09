@@ -1,25 +1,26 @@
-# N=20
 
-# EVc=(a*(a+1))/2/a
+N,K=map(int,input().split())
+_=input().split()
+S=[]
+for s in _:
+    S.append(int(s))
 
+# K=4
+# S=[17, 13, 13, 12, 15, 20, 10, 13, 17, 11]
+# K=3
+# S=[1,2,2,4,5]
 
-K=4
-S=[17, 13, 13, 12, 15, 20, 10, 13, 17, 11]
-max =sum(S[0:K])
-startindex=0
+EVlist=[]
 
-for i in range(len(S)-K):
-    tempmax=sum(S[i:K])
-    if tempmax>max:
-        max=tempmax
-        startindex=i
-    else:
-        pass
-EVs=[]
-for e in range(K):
-    tempev=S[startindex+e]*(S[startindex+e]+1)/2/S[startindex+e]
-    EVs.append(tempev)
-print(sum(EVs))
+for i in range(len(S)):
+    tempEV=(S[i]*(S[i]+1))/2/S[i]
+    EVlist.append(tempEV)
 
+maxEVsum=0
 
+for j in range(len(EVlist)):
+    tempEVsum=sum(EVlist[j:j+K])
+    if maxEVsum<tempEVsum:
+        maxEVsum=tempEVsum
 
+print(maxEVsum)
