@@ -12,11 +12,19 @@ for s in _:
 
 maxsum=0
 
-for i in range(len(S)):  #ここがrange(len(S)-K)ではダメっぽいのがわからない・・・
-    tempsum=sum(S[i:i+K])
-    if maxsum<tempsum:
-        maxsum=tempsum
-    else:
+# ↓ここがrange(len(S)-K)ではダメっぽいのがわからない・・・
+for i in range(len(S)):
+    try:
+        t=S[i]-S[i+K]
+    except IndexError:
+        t=0
+    if t<0:
         pass
+    else:
+        tempsum=sum(S[i:i+K])
+        if maxsum<tempsum:
+            maxsum=tempsum
+        else:
+            pass
 
 print(maxsum)
