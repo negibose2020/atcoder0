@@ -1,30 +1,19 @@
 N,K=map(int,input().split())
-# S=list(map(int,input().split()))
 _=input().split()
 S=[]
 for s in _:
     S.append((int(s)+1)/2) #初めから期待値で配列作成
+# N,K=10,4
+# S=[9.0, 7.0, 7.0, 6.5, 8.0, 10.5, 5.5, 7.0, 9.0, 6.0]
 
-# K=4
-# S=[17, 13, 13, 12, 15, 20, 10, 13, 17, 11]
-# K=3
-# S=[1,2,2,4,5]
+ans=sum(S[0:K])
+temp=ans
 
-maxsum=0
-
-# ↓ここがrange(len(S)-K)ではダメっぽいのがわからない・・・
-for i in range(len(S)):
-    try:
-        t=S[i]-S[i+K]
-    except IndexError:
-        t=0
-    if t<0:
-        pass
+for i in range(N-K):
+    temp=temp-S[i]+S[i+K]
+    if ans<temp:
+        ans=temp
     else:
-        tempsum=sum(S[i:i+K])
-        if maxsum<tempsum:
-            maxsum=tempsum
-        else:
-            pass
-
-print(maxsum)
+        pass
+    
+print(ans)
