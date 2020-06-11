@@ -1,22 +1,16 @@
+from collections import Counter
+
 N=int(input())
-Sarr1=[]
-Sarr2=[]
+S=[]
+
 for _ in range(N):
     s=input()
-    if Sarr1.count(s)==0:
-        Sarr1.append(s)
-        Sarr2.append(0)
-    else:
-        i=Sarr1.index(s)
-        Sarr2[i]+=1
-ans=[]
-m=max(Sarr2)
+    S.append(s)
 
-for i in range(len(Sarr2)):
-    if Sarr2[i]==m:
-        ans.append(Sarr1[i])
-    else:
-        pass
-FA=sorted(ans)
-for z in FA:
-    print(z)
+c=Counter(S)
+
+max_s_list= [kv[0] for kv in c.items() if kv[1]==max(c.values())]
+
+ans=sorted(max_s_list)
+for a in ans:
+    print(a)
