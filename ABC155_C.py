@@ -8,9 +8,16 @@ for _ in range(N):
     S.append(s)
 
 c=Counter(S)
+arr=c.most_common()
 
-max_s_list= [kv[0] for kv in c.items() if kv[1]==max(c.values())]
+maxnum=arr[0][1]
+ans=[]
 
-ans=sorted(max_s_list)
-for a in ans:
-    print(a)
+for i in range(len(arr)):
+    if arr[i][1]==maxnum:
+        ans.append(arr[i][0])        
+    else:
+        break
+FA=sorted(ans)
+for j in FA:
+    print(j)
