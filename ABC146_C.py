@@ -3,7 +3,6 @@ def CanIBuy(A,B,mid):
     price=A*mid+B*D
     return price
 
-
 A,B,X=map(int,input().split())
 
 left=0
@@ -39,7 +38,7 @@ for i in range(X):
         else:
             right=(_left+_right)//2
     else:
-        break
-    # print(i,left,right)
-
-print(left)
+        _left=left
+        _right=right
+        print((_left+_right)//2)
+        exit()
