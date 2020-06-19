@@ -10,13 +10,23 @@ left=0
 right=10**9
 
 for i in range(X):
-
+    if left==right:
+        if CanIBuy(A,B,(left+right)//2)<=X:
+            print(left)
+            exit()
+        else:
+            if left==0:
+                print(0)
+                exit()
+            else:
+                print(left-1)
+                exit()
+    else:
+        pass
+    
     if CanIBuy(A,B,(left+right)//2)<X:
         _left=left
         _right=right
-        '''
-        このifの部分は怪しい
-        '''
         if left==(_left+_right)//2:
             left+=1
         else:
@@ -24,14 +34,12 @@ for i in range(X):
     elif CanIBuy(A,B,(left+right)//2)>X:
         _left=left
         _right=right
-        '''
-        このifの部分は怪しい
-        '''
         if right==(_left+_right)//2:
             right-=1
-        right=(_left+_right)//2
+        else:
+            right=(_left+_right)//2
     else:
         break
-    print(i,left,right)
+    # print(i,left,right)
 
 print(left)
