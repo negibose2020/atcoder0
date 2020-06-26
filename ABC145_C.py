@@ -15,8 +15,9 @@ distance=[]
 
 
 for k in range(len(R)):
-    a,b,c=R[k]
-    temp_town=[town[a],town[b],town[c]]
+    temp_town=[]
+    for h in range(N):
+        temp_town.append(town[R[k][h]])
     
     temp_distance=[]
     for i in range (N-1):
