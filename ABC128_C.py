@@ -32,7 +32,7 @@ p=list(map(int,input().split()))
 # print(p)
 
 LightOnPattern=0
-
+#bit全探索
 for Pattern in range (2**N):
     SwitchPattern=[]
     for ONOFF in range(N):
