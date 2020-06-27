@@ -1,28 +1,24 @@
 N=int(input())
 a=list(map(int,input().split()))
 
-l=sorted(a)
+l=[0]*((10**5)+2)
 
-# N=10
-# l=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+for v in a:
+    l[v]+=1
+    l[v+1]+=1
+    l[v+2]+=1
+
+print(max(l))
 
 
-ans=0
-
-for i in range(N):
-    if i>=1 and l[i]==l[i-1]:
-        continue
-    else:
-        t=l[i]
-        for j in range(N-i):
-            c=l[i+j]
-            if abs(c-t)<=2:
-                continue
-            else:
-                _ans=j
-                if _ans>ans:
-                    ans=_ans
-                else:
-                    pass
-                break
-print(ans)
+'''
+参考URL
+https://arcslab.hatenablog.jp/entry/ABC072
+>数xに対して、count[x-1]++; count[x]++; count[x+1]++;をしていった後、どのcount[]が最大の値かを調べればOK。
+>イメージとしては「長さnの直線上に積み木を3つずつ積んでいく」感じ。一番高く積み上がった場所が答え。
+'''
+'''
+参考URL2
+http://prdc.hatenablog.com/entry/2017/09/04/223025
+>Pythonでの上記イメージの記述
+'''
