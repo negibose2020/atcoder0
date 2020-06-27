@@ -1,23 +1,22 @@
-#numpy使用
-#arrの条件に合う要素の判定と数の取得
-
-import numpy as np
-
 N=int(input())
 a=list(map(int,input().split()))
 
-r=[]
+l=sorted(a)
 
-for _ in a:
-    l,m,h=_-1,_,_+1
-    _r=[l,m,h]
-    r.append(_r)
-arr=np.array(r)
+ans=1
 
-ans=0
-for i in range (max(a)+2):
-    _ans=np.sum(np.count_nonzero(arr==i,axis=1))
+for i in range(N):
+    t=l[i]
+    _ans=0
+    for j in range (N-i):
+        c=l[i+j]
+        if c-t<=2:
+            pass
+        else:
+            _ans=j
+            break
     if _ans>ans:
         ans=_ans
+    else:
+        pass
 print(ans)
-
