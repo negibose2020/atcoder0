@@ -1,5 +1,5 @@
 from sys import stdin
-# import bisect
+import bisect
 
 sysin=stdin.readline
 
@@ -7,9 +7,6 @@ N,M,K=[int(x) for x in sysin().rstrip().split()]
 a=[int(x) for x in sysin().rstrip().split()]
 b=[int(x) for x in sysin().rstrip().split()]
 
-# print(N+M,K)
-# print(a)
-# print(b)
 # N,M=3,4
 # K=240
 # a=[60, 90, 120]
@@ -32,17 +29,12 @@ for i in b:
 
 ans=0
 
-mountA=len(accum_a)-1
-
-for j in range (mountA):
+for j in range (len(accum_a)-1):
     Kb=K-accum_a[j]
-    _accum_b=accum_b
-    _accum_b.append(Kb)
-    _accum_b.sort()
-    bookb=_accum_b.index(Kb)-1
-    if _accum_b.count(Kb)==2:
-        bookb+=1
-    if j+bookb>ans:
-        ans=j+bookb
+    bookB=bisect.bisect_right(accum_b,Kb)-1
+    if j+bookB>ans:
+        ans=j+bookB
+    else:
+        pass
 
 print(ans)
