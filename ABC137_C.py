@@ -1,25 +1,22 @@
 from collections import Counter
 
 N=int(input())
-L=[]
-V=[]
-
-for i in range(N):
-    si=input()
-    ci=Counter(si)
-    c=sorted(ci.elements())
-    v=L.count(c)
-    if v==0:
-        L.append(c)
-        V.append(1)
-    else:
-        ind=L.index(c)
-        V[ind]+=1
-
+l=[]
+v=[]
 
 ans=0
 
-for v in V:
-    ans+=v*(v-1)//2
+for i in range(N):
+    si=input()
+    # ci=Counter(si)
+    # c=sorted(ci.elements())
+    # c=sorted(Counter(si).elements())
+    sorted_s=''.join(sorted(Counter(si).elements()))
+    if sorted_s in l:
+        ans+=v[l.index(sorted_s)]
+        v[l.index(sorted_s)]+=1
+    else:
+        l.append(sorted_s)
+        v.append(1)
 
 print(ans)
