@@ -1,9 +1,8 @@
 from collections import Counter
 
 N=int(input())
-l=[]
-v=[]
 
+dic={}
 ans=0
 
 for i in range(N):
@@ -12,11 +11,17 @@ for i in range(N):
     # c=sorted(ci.elements())
     # c=sorted(Counter(si).elements())
     sorted_s=''.join(sorted(Counter(si).elements()))
-    if sorted_s in l:
-        ans+=v[l.index(sorted_s)]
-        v[l.index(sorted_s)]+=1
+    if sorted_s in dic:
+        ans+=dic[sorted_s]
+        dic[sorted_s]+=1
     else:
-        l.append(sorted_s)
-        v.append(1)
+        dic[sorted_s]=1
 
 print(ans)
+
+
+'''
+dict 使用
+配列操作よりも高速。
+ハッシュテーブル使用している。
+'''
