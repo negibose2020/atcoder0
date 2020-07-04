@@ -9,6 +9,7 @@
         {
             "name": "Python: Current File",
             "type": "python",
+            "pythonPath": "C:\\Users\\KOYAMA\\anaconda3\\python.exe",
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal"
