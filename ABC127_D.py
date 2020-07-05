@@ -20,11 +20,12 @@ Arr=excArry[np.argsort(excArry[:,col_num])[::-1]]
 
 point=0
 
+
 for j in range (M):
     count=np.count_nonzero(A<Arr[j][1])
     if count > 0:
         m=min(count,Arr[j][0])
-        A[point:m]=Arr[j][1]
+        A[point:point+m]=Arr[j][1]
         point+=m
         # A=np.sort(A)
     else:
