@@ -3,7 +3,7 @@ import numpy as np
 
 N,M=map(int,input().split())
 # A=np.array(list(map(int,input().split())))
-A=np.array(list(map(int,input().split())),dtype=np.int64)
+A=np.array(list(map(int,input().split())),dtype=np.int32)
 A=np.sort(A)
 
 EXC=[]
@@ -11,7 +11,7 @@ EXC=[]
 for i in range(M):
     exc=list(map(int,input().split()))
     EXC.append(exc)
-excArry=np.array(EXC,dtype=np.int64)
+excArry=np.array(EXC,dtype=np.int32)
 
 col_num=1
 Arr=excArry[np.argsort(excArry[:,col_num])[::-1]]
