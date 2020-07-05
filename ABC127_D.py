@@ -18,13 +18,15 @@ Arr=excArry[np.argsort(excArry[:,col_num])[::-1]]
 # print(A)
 # print(Arr)
 
+point=0
 
 for j in range (M):
     count=np.count_nonzero(A<Arr[j][1])
     if count > 0:
         m=min(count,Arr[j][0])
         A[point:m]=Arr[j][1]
-        A=np.sort(A)
+        point+=m
+        # A=np.sort(A)
     else:
         break
 
