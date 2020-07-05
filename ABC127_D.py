@@ -1,15 +1,43 @@
+import numpy as np
 
 
 N,M=map(int,input().split())
-A=list(map(int,input().split()))
-A.sort()
-for i in range(M):
-    B,C=map(int,input().split())
-    for j in range (B):
-        if A[j]<C:
-            A[j]=C
-        else:
-            break
-    A.sort()
+# A=np.array(list(map(int,input().split())))
+A=np.array(list(map(int,input().split())),dtype=np.int64)
+A=np.sort(A)
 
-print(sum(A))
+EXC=[]
+
+for i in range(M):
+    exc=list(map(int,input().split()))
+    EXC.append(exc)
+excArry=np.array(EXC,dtype=np.int64)
+
+col_num=1
+Arr=excArry[np.argsort(excArry[:,col_num])[::-1]]
+# print(A)
+# print(Arr)
+
+
+for j in range (M):
+    count=np.count_nonzero(A<Arr[j][1])
+    if count > 0:
+        m=min(count,Arr[j][0])
+        A[point:m]=Arr[j][1]
+        A=np.sort(A)
+    else:
+        break
+
+print(np.sum(A))
+    
+#     for j in range (B):
+#         count=np.count_nonzero(A<C)
+#         if count>0:
+#             m=min(B,count)
+#             A[:m]=C
+#         else:
+#             continue
+    
+#     A=np.sort(A)
+
+# print(np.sum(A))
