@@ -22,11 +22,11 @@ point=0
 
 
 for j in range (M):
-    # change_Num=Arr[j][1]
-    count=np.count_nonzero(A<Arr[j][1])
+    change_Num=Arr[j][1]
+    count=np.count_nonzero(A<change_Num)
     if count > 0:
         m=min(count,Arr[j][0])
-        A[point:point+m]=Arr[j][1]
+        A[point:point+m]=change_Num
         point+=m
         # A=np.sort(A)
     else:
