@@ -1,55 +1,41 @@
 import numpy as np
 
 H,W,K=map(int,input().split())
-E=[]
-for e in range(H):
+b=[]
+for i in range(H):
     _=input()
     temp=_.replace('#','1').replace('.','0')
-    
-    E.append(list(map(int,temp)))
+    b.append(list(map(int,temp)))
 
-Arr=np.array(E)
-# print(Arr)
-FA=0
+area=np.array(b)
+
+ans=0
 
 for h in range (2**H):
-    # print("h:{0}が始まるよ。".format(h))
-    select_H=[]
+    select_H=[] #削除する行の組合わせを取得
+
     for i in range (H):
         if (h>>i) & 1==1:
             select_H.append(1)
         else:
             select_H.append(0)
     sHarr=np.array(select_H)
-    delSHarr=np.where(sHarr==1)
-    # print(sHarr)
-    # print(delSHarr)
-    _ans=np.delete(Arr,delSHarr,axis=0)
-    # print('________________ans__________________')
-    # print(_ans)
+    delsHarr=np.where(sHarr==1) #削除する行のindexを取得
+    area_afterDelsH=np.delete(area,delsHarr,axis=0) #エリアから行を削除する。
+            # 以下、行が削除された各パターンについて、列を削除していく。
 
     for w in range (2**W):
-        # print("w:{0}が始まるよ。".format(w))
-        select_W=[]
+        select_W=[] #削除する列の組合わせを取得
         for j in range (W):
             if (w>>j) &1 ==1:
                 select_W.append(1)
             else:
                 select_W.append(0)
         sWarr=np.array(select_W)
-        delsWarr=np.where(sWarr==1)
-        ans=np.delete(_ans,delsWarr,axis=1)
-        # print("***ans***")
-        # print(ans)
+        delsWarr=np.where(sWarr==1) #削除する列のindexを取得
+        area_afterDelsHsW=np.delete(area_afterDelsH,delsWarr,axis=1)
 
-        if np.sum(ans)==K:
-            FA+=1
+        if np.sum(area_afterDelsHsW)==K:
+            ans+=1
 
-print(FA)
-
-
-
-# for x in range(2**H):
-    
-    # ans=np.delete(_ans,sWarr,axis=1)
-# print(ans)
+print(ans)
