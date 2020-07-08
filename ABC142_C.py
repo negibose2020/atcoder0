@@ -1,10 +1,13 @@
 N=int(input())
 Ai=list(map(int,input().split()))
 
-ans=''
+dic={}
 
 for i in range(1,N+1):
     a=Ai.index(i)+1
-    ans+=(str(a)+' ')
+    dic[i]=a
 
+ans=''
+for i in range(1,N+1):
+    ans+=str(dic[i])+' '
 print(ans)
