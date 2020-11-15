@@ -1,35 +1,39 @@
 # AtCoder Beginner Contest 182
-# 
-'''
-a=input()
-if int(a)%3==0:
+# C - To 3
+
+n=input()
+originr=int(n)%3
+if originr==0:
     print(0)
     exit()
 
+N=list(map(int,n))
+r1=0
+r2=0
 
-N=list(map(int,a))
-# N=list(map(int,input()))
-mod0=[]
-M0=0
-mod1=[]
-M1=0
-mod2=[]
-M2=0
+for e in N:
+    r=e%3
+    if r==1:
+        r1+=1
+    elif r==2:
+        r2+=1
 
-
-for i in range (len(N)):
-    m=N[i]%3
-    if m==0:
-        mod0.append(N[i])
-        M0+=1
-    elif m==1:
-        M1+=1
-        mod1.append(N[i])
+if originr==1:
+    if r1>0:
+        ans=1
     else:
-        M2+=1
-        mod2.append(N[i])
+        ans=2
+else:
+    if r2>0:
+        ans=1
+    else:
+        ans=2
+if ans==len(N):
+    print(-1)
+else:
+    print(ans)
 
-if M1==M2:
+'''
     print(0)
     exit()
 
@@ -45,12 +49,16 @@ if ans==len(N):
 else:
     print(ans)
 '''
+'''
 
 
 
 N=input()
 r1=0
 r2=0
+Rls1=[]
+Rls2=[]
+
 if int(N)%3==0:
     print(0)
     exit()
@@ -59,17 +67,18 @@ for e in N:
         pass
     elif int(e)%3==1:
         r1+=1
+        Rls1.append(int(e))
     else:
         r2+=1
-# print(r1,r2)
+        Rls2.append(int(e))
+print(Rls1)
+print(Rls2)
+print(r1,r2)
 
 if r2<r1:
     r1%=3
     r2%=3
     # print(r1,r2)
-    if r1==r2:
-        print(0)
-        exit()
     ans=abs(r1-r2)
     if ans==len(N):
         print(-1)
@@ -81,7 +90,7 @@ else:
         print(-1)
     else:
         print(ans)
-    
+   ''' 
 '''
 if r1==r2:
     print(0)
